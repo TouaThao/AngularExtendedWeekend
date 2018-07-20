@@ -1,1 +1,39 @@
-<h1>OWNER VIEW</h1>
+<h1>OWNER</h1>
+<dv ng-model-options="">
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Owner FirstName</label>
+        <div class="col-4">
+            <input class="form-control" type="text" id="example-text-input" ng-model="vm.view.firstName">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Owner LastName</label>
+        <div class="col-4">
+            <input class="form-control" type="text" id="example-text-input" ng-model="vm.view.lastName">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Owner city</label>
+        <div class="col-4">
+            <input class="form-control" type="text" id="example-text-input" ng-model="vm.view.city">
+        </div>
+    </div>
+    <button ng-click="vm.postOwner(vm.view)" type="submit" class="btn btn-primary">submit</button>
+    <select ng-model="vm.view.image_path" class="form-control">
+        <option value="Roger_Radcliffe.png">Male</option>
+        <option value="princess.jpeg">Female</option>
+    </select>
+
+</dv>
+<div ng-repeat="owner in vm.getOwners.list" class="row align-items-center">
+        <img class="card-img-top" ng-src="../picture/{{owner.image_path}}" alt="Card image cap">
+    <p class="card-text"></p>
+    <div class="col">
+    Owner first name: {{owner.firstName}}
+    </div>
+    <div class="col">
+        Owner last name: {{owner.lastName}}
+    </div>
+    <div class="col">
+        Owner City: {{owner.city}}
+    </div>

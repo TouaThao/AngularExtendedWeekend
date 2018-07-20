@@ -1,29 +1,49 @@
 <form>
 
-        <div class="form-group"> <!-- Full Name -->
-            <label for="full_name_id" class="control-label">Full Name</label>
-            <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="Pet Name">
-        </div>	
-    
-        <div class="form-group"> 
-            <label for="street1_id" class="control-label">Color</label>
-            <input type="text" class="form-control" id="street1_id" name="Color" placeholder="Color Of Pets">
-        </div>					
-                                         
-        <div class="form-group"> 
-            <label for="state_id" class="control-label">Type</label>
-            <select ng-model="" class="form-control" id="state_id">
-                <option value="dog.jpeg">Dog</option>
-                <option value="cat.jpeg">Cat</option>
-            </select>					
-        </div>	
-        
-        <div class="form-group"> <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary">submit</button>
-        </div>     
-        
-    </form>							
-  
+    <div class="form-group">
+        <label for="full_name_id" class="control-label">Pet Name</label>
+        <input type="text" class="form-control" id="full_name_id" name="pet Name" placeholder="Pet Name" ng-model="vm.show.name">
+    </div>
+
+    <div class="form-group">
+        <label for="street1_id" class="control-label">Color</label>
+        <input type="text" class="form-control" id="street1_id" name="Color" placeholder="Color Of Pets" ng-model="vm.show.color">
+    </div>
+    <div class="form-group">
+        <label for="street1_id" class="control-label">Breed</label>
+        <input type="text" class="form-control" id="street1_id" name="Breed" placeholder="Breed Of Pets" ng-model="vm.show.breed">
+    </div>
+    <div class="form-group">
+        <label for="street1_id" class="control-label">Age</label>
+        <input type="number" class="form-control" id="street1_id" name="Age" placeholder="Age Of Pets" ng-model="vm.show.age">
+    </div>
+    <select ng-model="vm.show.image_path" class="form-control">
+            <option value="dog.jpeg">Dog</option>
+            <option value="cat.jpeg">Cat</option>
+        </select>
+
+
+  <!-- <div class="form-group">
+        <label for="state_id" class="control-label" ng-model="vm.show.type">Type</label>
+        <select g-src="../picture/{{pets.image_path}}" class="form-control" id="state_id">
+            <option value="dog.jpeg">Dog</option>
+            <option value="cat.jpeg">Cat</option>
+        </select>   -->
+        <!-- <div class="form-group"> 
+                    <label for="street1_id" class="control-label">Owner Name</label>
+                    <input type="number" class="form-control" id="street1_id" name="Owner Name" placeholder="Owner Name" ng-model="vm.show.Age" >
+                </div>				
+        </div>	 -->
+    </div>
+
+    <div class="form-group">
+        <!-- Submit Button -->
+        <button ng-click="vm.post(vm.show)" type="submit" class="btn btn-primary">submit</button>
+    </div>
+
+</form>
+<!-- {{owner.owner_id}} -->
+
 
 <div class="row">
     <div class="col-4" ng-repeat="pets in vm.getPets.list">
@@ -32,11 +52,13 @@
             <div class="card-body">
                 <p class="card-text">Name: {{pets.name}}</p>
                 <p class="card-text">Color: {{pets.color}}</p>
-                <p class="card-text"> Type:{{pets.type}}</p>
                 <p class="card-text">Breed: {{pets.breed}}</p>
                 <p class="card-text">Age: {{pets.age}}</p>
-                <p class="card-text">CheckIn: {{pets.checkIn}}</p>
-                <!-- <button ng-click="vm.DeleteHouse(id)">Delete</button> -->
+                <button ng-click="vm.PetId(id)">Remove Pet</button>
+                <button> Check In</button>
+                <!-- <p class="card-text">CheckIn: {{pets.checkIn}}</p> -->
+                <!-- <button ng-click="">Delete</button> -->
+                <!-- <button ng-click="">CheckIn</button> -->
             </div>
         </div>
     </div>
