@@ -5,12 +5,16 @@
   "main": "index.js",
   "dependencies": {
     "angular": "^1.7.2",
+    "angular-animate": "^1.7.2",
+    "angular-aria": "^1.7.2",
+    "angular-material": "^1.1.10",
     "angular-route": "^1.7.2",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "init": "^0.1.2",
     "pg": "^7.4.3",
-    "route": "^0.2.5"
+    "route": "^0.2.5",
+    "sweetalert2": "^7.25.6"
   },
   "devDependencies": {},
   "scripts": {

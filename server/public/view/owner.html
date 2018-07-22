@@ -1,39 +1,40 @@
-<h1>OWNER</h1>
-<dv ng-model-options="">
-    <div class="form-group row">
-        <label for="example-text-input" class="col-2 col-form-label">Owner FirstName</label>
-        <div class="col-4">
-            <input class="form-control" type="text" id="example-text-input" ng-model="vm.view.firstName">
-        </div>
+<div id="inForms" class="row">
+    <div class="col">
+        <form>
+            <div class="row">
+                <div class="col">
+                    <h4>Add Owner</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="First Name" ng-model="vm.owner.firstName">
+                    <input type="text" class="form-control" placeholder="Last Name" ng-model="vm.owner.lastName">
+                    <input type="text" class="form-control" placeholder="City Name" ng-model="vm.owner.city">
+                  Add a picture  <select class="form-control" ng-model="vm.owner.image_path">
+                        <option value="Roger_Radcliffe.png">Male</option>
+                        <option value="princess.jpeg">Female</option>
+                    </select>
+                    <button ng-click="vm.postOwner(vm.owner)" type="submit" class="btn btn-primary">submit</button>
+                </div>
+ 
+            </div>
     </div>
-    <div class="form-group row">
-        <label for="example-text-input" class="col-2 col-form-label">Owner LastName</label>
-        <div class="col-4">
-            <input class="form-control" type="text" id="example-text-input" ng-model="vm.view.lastName">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="example-text-input" class="col-2 col-form-label">Owner city</label>
-        <div class="col-4">
-            <input class="form-control" type="text" id="example-text-input" ng-model="vm.view.city">
-        </div>
-    </div>
-    <button ng-click="vm.postOwner(vm.view)" type="submit" class="btn btn-primary">submit</button>
-    <select ng-model="vm.view.image_path" class="form-control">
-        <option value="Roger_Radcliffe.png">Male</option>
-        <option value="princess.jpeg">Female</option>
-    </select>
+    </form>
+</div>
+</div>
 
-</dv>
-<div ng-repeat="owner in vm.getOwners.list" class="row align-items-center">
-        <img class="card-img-top" ng-src="../picture/{{owner.image_path}}" alt="Card image cap">
-    <p class="card-text"></p>
-    <div class="col">
-    Owner first name: {{owner.firstName}}
-    </div>
-    <div class="col">
-        Owner last name: {{owner.lastName}}
-    </div>
-    <div class="col">
-        Owner City: {{owner.city}}
-    </div>
+
+
+
+
+<div class="row">
+    <div class="col-4" ng-repeat="owner in vm.getOwners.list">
+        <div class="card" style="width: 18rem;">
+            <img id="size" class="card-img-top" ng-src="../picture/{{owner.image_path}}" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">Owner First Name: {{owner.firstName}}</p>
+                <p class="card-text">Owner Last Name: {{owner.lastName}}</p>
+                <p class="card-text">Owner City: {{owner.city}}</p>
+                <button>Remove Owner</button>
+            </div>

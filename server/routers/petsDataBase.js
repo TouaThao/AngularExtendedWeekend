@@ -10,49 +10,36 @@ router.post('/post', (req,res)=>{
     let pet = req.body
     console.log('IN Router Post')
     pool.query(`INSERT INTO "pets"
-    ("name","color","breed","age","image_path","checkIn")
-    values($1,$2,$3,$4,$5,$6);`,
-    [pet.name, pet.color,pet.breed, pet.age, pet.image_path, pet.checkIn])
+    ("name","color","breed","age","image_path","owner_id","checkIn")
+    values($1,$2,$3,$4,$5,$6,$7);`,
+    [pet.name, pet.color, pet.breed, pet.age, pet.image_path, pet.owner_id, pet.checkIn])
     .then((result)=>{
-        console.log('IN Router.post', result)
+        console.log('IN Router.post', result);
         res.sendStatus(201)
     })
     .catch((error)=>{
-        console.log('IN Router.Post Error',error)
+        console.log('IN Router.Post Error',error);
         res.sendStatus(500)
     })
 })
 
-router.post('/showNew', (req,res)=>{
-    let owner = req.body
-    console.log('IN Router Post')
-    pool.query(`INSERT INTO "owner"
-    ("firstName","lastName","city","image_path")
-    values($1,$2,$3,$4);`,
-    [owner.firstName, owner.lastName,owner.city, owner.image_path])
-    .then((result)=>{
-        console.log('IN Router.post', result)
-        res.sendStatus(201)
-    })
-    .catch((error)=>{
-        console.log('IN Router.Post Error',error)
-        res.sendStatus(500)
-    })
-})
 
 
 // router get
 
-router.get('/showOwner', (req, res) => {
-    console.log('Router GET Owner');
-    pool.query('SELECT * FROM "owner"')
-        .then((respond) => {
-            res.send(respond.rows);
-        })
-        .catch((error) => {
-            console.log('In owner router.get error', error)
-        })
-})
+// router.get('/getOwnerInfo', (req,res)=>{
+//     console.log('Getting ownerInfo so we could use it');
+//     pool.query(`SELECT * FROM "owner"`)
+//     .then((result)=>{
+//         console.log(result.rows);
+//         res.sendStatus(result.rows)
+//     })
+//     .catch((error)=>{
+//         console.log('IN get owner info error',error)
+//         res.sendStatus(500)
+//     })
+// })
+
 
 router.get('/showPets', (req, res) => {
     console.log('Router GET Pet');
@@ -67,19 +54,39 @@ router.get('/showPets', (req, res) => {
 
 // router delete
 
+router.delete('/:id', (req, res) => {
+    
+    const petsDataBase = req.params.id;
+    pool.query(`DELETE FROM "pets"
+                WHERE "id" = $1;`, [petsDataBase])
+        .then((results) => {
+            res.send(results.rows);
+        })
+        .catch((error) => {
+            console.log('error on DELETE route', error);
+            res.sendStatus(500);
+        })
+})
 
-router.delete('/removePets',(req,res)=>{
-    let petId= req.params.id;
-    pool.query('DELETE FROM "pets" WHERE "id" = $1; ' [petId])
+//router put
+
+router.put('/showEdit', (req,res) =>{
+    let edit = req.body;
+    pool.query(`UPDATE "pets" 
+    SET "name" = $1, "color" = $2, "breed" = $3,
+    "age" = $4, "image_path" = $5,
+    Where "id" = $6`,[edit.name, edit.color, edit.breed, edit.age, edit.image_path, edit.id])
     .then((result)=>{
-        console.log('In Delete', result)
-        res.sendStatus(201)
+        res.sendStatus(200);
     })
-    .catch((error)=>{
-        console.log('Delete Error', error)
-        res.sendStatus(500)
+    .catch((error) =>{
+        res.sendStatus(500);
     })
 })
 
 
+
+
+
 module.exports = router;
+

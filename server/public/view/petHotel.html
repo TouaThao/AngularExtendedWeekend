@@ -17,19 +17,26 @@
         <label for="street1_id" class="control-label">Age</label>
         <input type="number" class="form-control" id="street1_id" name="Age" placeholder="Age Of Pets" ng-model="vm.show.age">
     </div>
+    <div class="row">
+            <div class="col">
+                <label>Select Owner</label>
+                <select class="form-control" ng-model="vm.show.project_id">
+                    <option ng-repeat="owner in vm.getOwner.list" value="{{owner.id}}">{{owner.firstName}}</option>
+                </select>
+            </div>
     <select ng-model="vm.show.image_path" class="form-control">
-            <option value="dog.jpeg">Dog</option>
-            <option value="cat.jpeg">Cat</option>
-        </select>
+        <option value="dog.jpeg">Dog</option>
+        <option value="cat.jpeg">Cat</option>
+    </select>
 
 
-  <!-- <div class="form-group">
+    <!-- <div class="form-group">
         <label for="state_id" class="control-label" ng-model="vm.show.type">Type</label>
         <select g-src="../picture/{{pets.image_path}}" class="form-control" id="state_id">
             <option value="dog.jpeg">Dog</option>
             <option value="cat.jpeg">Cat</option>
         </select>   -->
-        <!-- <div class="form-group"> 
+    <!-- <div class="form-group"> 
                     <label for="street1_id" class="control-label">Owner Name</label>
                     <input type="number" class="form-control" id="street1_id" name="Owner Name" placeholder="Owner Name" ng-model="vm.show.Age" >
                 </div>				
@@ -54,7 +61,10 @@
                 <p class="card-text">Color: {{pets.color}}</p>
                 <p class="card-text">Breed: {{pets.breed}}</p>
                 <p class="card-text">Age: {{pets.age}}</p>
-                <button ng-click="vm.PetId(id)">Remove Pet</button>
+                <button ng-if="show.edit" ng-click="vm.cancelEditMode(show)">Cancel</button>
+                <button ng-if="show.edit" ng-click="vm.saveProject(show)">Save</button>
+                <button ng-if="!show.edit" ng-click="vm.editMode(show)">Edit</button>
+                <button ng-click="vm.PetId(show)">Remove Pet</button>
                 <button> Check In</button>
                 <!-- <p class="card-text">CheckIn: {{pets.checkIn}}</p> -->
                 <!-- <button ng-click="">Delete</button> -->
