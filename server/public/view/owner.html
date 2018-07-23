@@ -36,5 +36,5 @@
                 <p class="card-text">Owner First Name: {{owner.firstName}}</p>
                 <p class="card-text">Owner Last Name: {{owner.lastName}}</p>
                 <p class="card-text">Owner City: {{owner.city}}</p>
-                <button>Remove Owner</button>
+                <button ng-click="vm.deleteOwner(owner.id)">DELETE</button>
             </div>

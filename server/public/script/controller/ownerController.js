@@ -10,5 +10,9 @@ app.controller('ownerController',['petService',function(petService){
     self.addOwnerData = petService.storeOwnerData
     self.postOwner = petService.showOwnerPost
 
+    //Delete
+
+    self.deleteOwner = petService.deleteOwner
+
 
 }]);

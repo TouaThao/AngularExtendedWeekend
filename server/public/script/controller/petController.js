@@ -13,10 +13,17 @@ app.controller ('petController',['petService', function(petService){
 
     // Get owner info from service
     petService.getOwnerInfo()
+    self.getOwnerName = petService.getOwnerName;
+
+
+    // check in
+    self.checkIn = function(pet){
+        pet.checkIn = !pet.checkIn;
+        petService.checkIn(pet)
+    }
 
     //Delete button
 
-    // self.deletePet = petService.deletePet;
     self.PetId = function(removePet){
         Swal({
             title: 'Are you sure?',
@@ -40,19 +47,23 @@ app.controller ('petController',['petService', function(petService){
 
 ///// Edit
 
-self.editMode = petService.savePet;
+// self.editMode = petService.savePet;
 
-// self.editMode = function(show){
-//     console.log(show)
-//     show.edit = true;
-// }
-self.cancelEditMode = function(show){
-    show.edit = false;
+
+self.edit = function(pet){
+    pet.editMode = true;
 }
 
-self.savePet = function(show){
-    console.log(show);
-    petService.savePet(show);
+self.cancelEditMode = function(pet){
+    pet.editMode = false;
+    petService.getPet();
 }
+
+self.savePet = function(pet){
+    pet.editMode = false
+    console.log(pet);
+    petService.savePetData(pet);
+}
+
 
 }]);
