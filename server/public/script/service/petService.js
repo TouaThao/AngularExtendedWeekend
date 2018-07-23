@@ -48,30 +48,23 @@ app.service('petService', ['$http', function ($http) {
     }
     self.getPet()
 
-  
-    self.deletePets = function (show) {
-        console.log('Checking',show)
-        return $http.delete('/petsDataBase/' + show_id).then(function (response) {
-            Swal("Deleted!", "Your Pet entry has been deleted.", "success");
+    self.deletePet = function(removePet) {
+        console.log('Deleting from database: ', removePet);
+        $http({
+            method: 'DELETE',
+            url: `/petsDataBase/${removePet.id}`,
+            
+        })
+        .then(function(response) {
+            console.log('Successful DELETE: ', response);
             self.getPet();
-        }).catch(function (err) {
-            console.log('Error deleting message', err)
-        });
+        })
+        .catch(function(error) {
+            console.log('Error with DELETE: ', error);
+        })
     }
 
-    // self.deletePets = function(pet){
-    //     console.log('In Delete')
-    //     $http({
-    //         method:'DELETE',
-    //         url:`/petDataBase/${pet.id}`
-    //     })
-    //     .then(function(res){
-    //         self.getPet();
-    //     })
-    //     .catch(function(error){
-    //         console.log(error)
-    //     })
-    // }
+
 
     self.savePet = function(show){
         $http({

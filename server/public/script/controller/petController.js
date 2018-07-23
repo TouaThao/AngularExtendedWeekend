@@ -15,7 +15,9 @@ app.controller ('petController',['petService', function(petService){
     petService.getOwnerInfo()
 
     //Delete button
-    self.PetId = function(show){
+
+    // self.deletePet = petService.deletePet;
+    self.PetId = function(removePet){
         Swal({
             title: 'Are you sure?',
             text: 'You will not be able to recover this entry once deleted!',
@@ -25,7 +27,7 @@ app.controller ('petController',['petService', function(petService){
             cancelButtonText: 'No, keep it'
         }).then((result) => {
             if (result.value) {
-                petService.deletePets(show);
+                petService.deletePet(removePet);
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal(
                     'Cancelled',

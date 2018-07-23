@@ -70,19 +70,19 @@ router.delete('/:id', (req, res) => {
 
 //router put
 
-router.put('/showEdit', (req,res) =>{
-    let edit = req.body;
-    pool.query(`UPDATE "pets" 
-    SET "name" = $1, "color" = $2, "breed" = $3,
-    "age" = $4, "image_path" = $5,
-    Where "id" = $6`,[edit.name, edit.color, edit.breed, edit.age, edit.image_path, edit.id])
-    .then((result)=>{
-        res.sendStatus(200);
-    })
-    .catch((error) =>{
-        res.sendStatus(500);
-    })
-})
+// router.put('/showEdit', (req,res) =>{
+//     let edit = req.body;
+//     pool.query(`UPDATE "pets" 
+//     SET "name" = $1, "color" = $2, "breed" = $3,
+//     "age" = $4, "image_path" = $5,
+//     Where "id" = $6`,[edit.name, edit.color, edit.breed, edit.age, edit.image_path, edit.id])
+//     .then((result)=>{
+//         res.sendStatus(200);
+//     })
+//     .catch((error) =>{
+//         res.sendStatus(500);
+//     })
+// })
 
 
 
