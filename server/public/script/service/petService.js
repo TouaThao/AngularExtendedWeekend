@@ -108,7 +108,7 @@ app.service('petService', ['$http', function ($http) {
         })
         .then(function(reponse){
             console.log('Got to savePetData PUT ')
-            self.getpet()
+            
         })
         .catch(function(error){
             console.log('error in savePetData', error)

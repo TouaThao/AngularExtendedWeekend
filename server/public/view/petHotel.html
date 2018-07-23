@@ -1,4 +1,3 @@
-
 <form>
 
     <div class="form-group">
@@ -25,7 +24,8 @@
                 <option ng-repeat="owner in vm.getOwner.list" value="{{owner.id}}">{{owner.firstName}}</option>
             </select>
         </div>
-        <select ng-model="vm.show.image_path" class="form-control">
+       
+        <select  ng-model="vm.show.image_path" class="form-control">
             <option value="dog.jpeg">Dog</option>
             <option value="cat.jpeg">Cat</option>
         </select>
@@ -50,26 +50,26 @@
                     <input ng-model="pets.color">
                     <input ng-model="pets.breed">
                     <input ng-model="pets.age">
-                
+
 
                 </div>
-                <div ng-if = "!pets.editMode">
-                        <p class="card-text">Name: {{pets.name}}</p>
-                        <p class="card-text">Color: {{pets.color}}</p>
-                        <p class="card-text">Breed: {{pets.breed}}</p>
-                        <p class="card-text">Age: {{pets.age}}</p>
-                        <p class="card-text">Owner: {{pets.firstName}}</p>
+                <div ng-if="!pets.editMode">
+                    <p class="card-text">Name: {{pets.name}}</p>
+                    <p class="card-text">Color: {{pets.color}}</p>
+                    <p class="card-text">Breed: {{pets.breed}}</p>
+                    <p class="card-text">Age: {{pets.age}}</p>
+                    <p class="card-text">Owner: {{pets.firstName}}</p>
+                    <p class="card-text">Checked In: {{pets.checkIn}}</p>
+
+
                 </div>
                 <button ng-if="pets.editMode" ng-click="vm.cancelEditMode(pets)">Cancel</button>
                 <button ng-if="pets.editMode" ng-click="vm.savePet(pets)">Save</button>
                 <button ng-if="!pets.editMode" ng-click="vm.edit(pets)">Edit</button>
                 <button ng-click="vm.PetId(pets)">Remove Pet</button>
+
                 <button ng-click="vm.checkIn(pets)">CheckIn</button>
+
             </div>
         </div>
     </div>
-
-        
-    
-
-   
